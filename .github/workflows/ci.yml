@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
@@ -21,17 +22,11 @@ jobs:
       - name: Run markdown lint
         run: |
           npx remark . --use remark-preset-lint-consistent --frail || true
-          npx remark . --use remark-preset-lint-consistent --frail > remark-lint-report.json || true
+          npx remark . --use remark-preset-lint-consistent --frail > reports/remark-lint-report.json || true
 
-      - name: Upload artifact
+      - name: Upload lint report artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-unique-artifact-name-1  # Altere para um nome único
-          path: path/to/artifact
+          name: remark-lint-report  # Nome único do artefato
+          path: reports/remark-lint-report.json  # Caminho para o arquivo de relatório JSON
 
-
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: remark-lint-report-json
-          path: remark-lint-report.json
