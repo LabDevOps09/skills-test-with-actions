@@ -23,10 +23,12 @@ jobs:
           npx remark . --use remark-preset-lint-consistent --frail || true
           npx remark . --use remark-preset-lint-consistent --frail > remark-lint-report.json || true
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: remark-lint-report
-          path: remark-lint-report.json
+          name: my-unique-artifact-name  # Altere para um nome único
+          path: path/to/artifact
+
 
 
       - uses: actions/upload-artifact@v4
