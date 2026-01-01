@@ -25,7 +25,7 @@ jobs:
           npx remark . --use remark-preset-lint-consistent --frail > reports/remark-lint-report.json || true
 
       - name: Upload lint report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: remark-lint-report  # Nome único do artefato
           path: reports/remark-lint-report.json  # Caminho para o arquivo de relatório JSON
